@@ -1,0 +1,314 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Bhuvi & Nick — Wedding</title>
+  <meta name="description" content="Wedding celebrations for Bhuvi & Nick in New Delhi — March 13–14." />
+  
+  <!-- Open Graph / Social Media Meta Tags -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Bhuvi & Nick — Wedding" />
+  <meta property="og:description" content="Join us for our wedding celebrations in New Delhi on March 13–14, 2025. Mehendi ceremony and wedding ceremony details inside." />
+  <meta property="og:url" content="https://yourwebsite.com" />
+  <!-- <meta property="og:image" content="https://yourwebsite.com/wedding-image.jpg" /> -->
+  
+  <!-- Twitter Card Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Bhuvi & Nick — Wedding" />
+  <meta name="twitter:description" content="Join us for our wedding celebrations in New Delhi on March 13–14, 2025." />
+
+  <!-- Only the names use a custom font (Google Fonts). Body uses system serif for reliability. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --cream: #f3f2c5;
+      --sage: #bac59a;
+      --ink: #0b0b09;
+
+      --serif: ui-serif, "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua",
+               Georgia, "Times New Roman", Times, serif;
+      --display: "Cinzel", ui-serif, Georgia, "Times New Roman", Times, serif;
+    }
+
+    *{ box-sizing: border-box; }
+    html{ scroll-behavior: smooth; }
+
+    body{
+      margin: 0;
+      background: var(--sage);
+      color: var(--ink);
+      font-family: var(--serif);
+      line-height: 1.55;
+      font-size: 18px;
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+      font-kerning: normal;
+      font-feature-settings: "kern" 1, "liga" 1, "clig" 1;
+    }
+
+    a{ color: inherit; text-decoration: none; }
+    a:hover{ text-decoration: underline; }
+
+    .wrap{
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 28px 18px 60px;
+      position: relative;
+      z-index: 1; /* above the fixed florals */
+    }
+
+    /* Corner florals (matches the earlier working approach):
+       fixed to the viewport, behind the cream panel.
+       Keep these files next to this HTML file:
+         - marigold_corner_left.svg
+         - marigold_corner_right.svg */
+    .corner{
+      position: fixed;
+      width: min(320px, 40vw);
+      height: auto;
+      z-index: 0;
+      pointer-events: none;
+      user-select: none;
+      opacity: .98;
+      filter: drop-shadow(0 10px 20px rgba(0,0,0,.14));
+    }
+    .corner.left{ left: 0; bottom: 0; }
+    .corner.right{ right: 0; bottom: 0; }
+
+    /* One simple, square-edged cream panel (invitation-style) */
+    .invite{
+      position: relative;
+      background: var(--cream);
+      border: 10px solid rgba(186,197,154,.35);
+      outline: 1px solid rgba(11,11,9,.20);
+      outline-offset: -18px;
+      box-shadow: 0 22px 70px rgba(0,0,0,.12);
+      border-radius: 0;
+      padding: clamp(26px, 4.5vw, 56px);
+    }
+
+    /* Top navigation */
+    .topnav{
+      display:flex;
+      justify-content:center;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-bottom: 26px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid rgba(11,11,9,.18);
+    }
+    .topnav a{
+      font-family: var(--display);
+      letter-spacing: .10em;
+      text-transform: uppercase;
+      font-size: 12px;
+      padding: 6px 2px;
+      opacity: .92;
+    }
+    .topnav a:focus{ outline: 2px solid rgba(238,176,63,.7); outline-offset: 3px; }
+
+    .kicker{
+      font-family: var(--display);
+      letter-spacing: .10em;
+      text-transform: uppercase;
+      font-size: 12px;
+      text-align:center;
+      opacity: .86;
+      margin: 0;
+    }
+
+    h1{
+      font-family: var(--display);
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      text-align: center;
+      margin: 14px 0 10px;
+      font-size: clamp(34px, 5.4vw, 56px);
+    }
+
+    .subline{
+      text-align:center;
+      margin: 10px auto 0;
+      max-width: 46rem;
+      font-size: 19px;
+      opacity: .92;
+    }
+
+    .rule{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap: 14px;
+      margin: 22px 0;
+      opacity: .70;
+    }
+    .rule span{
+      display:block;
+      height:1px;
+      width: 96px;
+      background: rgba(11,11,9,.24);
+    }
+
+    .section{
+      padding: 26px 0;
+      border-top: 1px solid rgba(11,11,9,.16);
+    }
+    .section:first-of-type{
+      border-top: none;
+      padding-top: 10px;
+    }
+
+    h2{
+      font-family: var(--display);
+      text-transform: uppercase;
+      letter-spacing: .10em;
+      font-size: 14px;
+      text-align:center;
+      margin: 0 0 12px;
+    }
+
+    .center{ text-align: center; }
+
+    .event{
+      margin: 14px auto 0;
+      max-width: 44rem;
+      text-align:center;
+      font-size: 19px;
+    }
+    .event strong{ font-weight: 700; }
+
+    .muted{ opacity: .86; }
+
+    .accent{
+      display:inline-block;
+      border-bottom: 2px solid rgba(238,176,63,.85);
+      padding-bottom: 2px;
+    }
+
+    .rsvp{
+      max-width: 44rem;
+      margin: 0 auto;
+      text-align:center;
+      font-size: 18px;
+    }
+    .rsvp a{
+      font-weight: 600;
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+
+    footer{
+      margin-top: 26px;
+      text-align:center;
+      font-family: var(--display);
+      letter-spacing: .10em;
+      text-transform: uppercase;
+      font-size: 12px;
+      opacity: .82;
+    }
+
+    @media (max-width: 760px){
+      .invite{ outline-offset: -14px; }
+      .topnav{ gap: 12px; }
+      .rule span{ width: 72px; }
+      .corner{ width: min(260px, 48vw); }
+    }
+  </style>
+</head>
+<body>
+  <!-- Corner florals (behind the cream panel) -->
+  <img class="corner left" src="marigold_corner_left.svg" alt="" aria-hidden="true" />
+  <img class="corner right" src="marigold_corner_right.svg" alt="" aria-hidden="true" />
+
+  <main class="wrap">
+    <div class="invite" id="top">
+      <nav class="topnav" aria-label="On-page navigation">
+        <a href="#events">Events</a>
+        <a href="#travel">Travel</a>
+        <a href="#stay">Stay</a>
+        <a href="#delhi">Things to do</a>
+        <a href="#faq">FAQ</a>
+        <a href="#rsvp">RSVP</a>
+      </nav>
+
+      <section class="section" aria-label="Hero">
+        <p class="kicker" style="margin-top:6px">The wedding ceremony of</p>
+        <h1>Bhuvi &amp; Nick</h1>
+        <div class="rule" aria-hidden="true"><span></span>✦<span></span></div>
+        <p class="subline"><span class="accent">13th &amp; 14th March</span> • New Delhi</p>
+        <p class="subline muted" style="margin-top:12px">We can’t wait to celebrate with you. Details below — and please check back closer to the date for a few informal get-togethers during the week.</p>
+      </section>
+
+      <section class="section" id="events" aria-label="Events">
+        <h2>Events</h2>
+        <div class="event">
+          <p><strong>Mehendi Ceremony</strong><br>
+            Friday, 13 March • 12:30 PM<br>
+            Jaypee Vasant Continental Hotel<br>
+            <span class="muted">Vasant Vihar, New Delhi</span>
+          </p>
+        </div>
+        <div class="event" style="margin-top:18px">
+          <p><strong>Wedding Ceremony</strong><br>
+            Saturday, 14 March<br>
+            Pheras — 5:00 PM • Dinner — 7:00 PM<br>
+            Rajhans Hotel, Surajkund
+          </p>
+        </div>
+      </section>
+
+      <section class="section" id="travel" aria-label="Travel">
+        <h2>Travel</h2>
+        <div class="center" style="max-width:46rem; margin:0 auto; font-size:18px">
+          Nearest airport: <strong>DEL (Indira Gandhi International)</strong>.<br>
+          <span class="muted">Delhi traffic can be slow—please build in buffer time, especially on wedding day.</span>
+        </div>
+      </section>
+
+      <section class="section" id="stay" aria-label="Stay">
+        <h2>Stay</h2>
+        <div style="max-width:46rem; margin:0 auto; font-size:18px; text-align:center">
+          <p style="margin:0 0 12px">
+            We don’t expect guests to make two separate hotel reservations. Our main recommendation is the
+            <strong>Jaypee Vasant Continental</strong>, but <strong>any hotel in South or Central Delhi</strong> should be great.
+          </p>
+          <p style="margin:0 0 12px" class="muted">
+            If you’re browsing, we suggest filtering for options rated <strong>8+</strong> on Booking.com (or similar).
+          </p>
+          <p style="margin:0 0 12px">
+            Prefer an apartment? One option is
+            <a href="https://delhi.oliveapartmentsdelhi.com/?gad_source=1&gad_campaignid=23426735256&gbraid=0AAAAA_44-L4bPX7MMyUyHl91ojj_82hIl&gclid=Cj0KCQiA-NHLBhDSARIsAIhe9X2QgPmAUzboVhu062jhrnXQd_351nNRsSj9I9Kkxl46RS8njsIG-T0aAou2EALw_wcB" target="_blank" rel="noopener">Olive Apartments Delhi</a>.
+          </p>
+          <p style="margin:0" class="muted">
+            Airbnb neighborhoods that work well: Green Park, CR Park, Panchsheel Enclave, Sarvapriya Vihar, Vasant Vihar,
+            Safdarjung (SDA), or Defence Colony.
+          </p>
+        </div>
+      </section>
+
+      <section class="section" id="delhi" aria-label="Things to do">
+        <h2>Things to do in Delhi</h2>
+        <div style="max-width:46rem; margin:0 auto; font-size:18px; text-align:center">
+          <p style="margin:0 0 12px">We’ve put together a short guide here:</p>
+          <p style="margin:0 0 10px"><a href="https://docs.google.com/document/d/1_VAli7NwSQ9EJEbRS1hDev6qDvxTfZcmQRoa667NPT0/edit?usp=sharing" target="_blank" rel="noopener">Things to do in Delhi</a></p>
+          <p style="margin:0" class="muted">We’ll keep updating it — please check back closer to the date.</p>
+        </div>
+      </section>
+
+      <section class="section" id="faq" aria-label="FAQ">
+        <h2>FAQ</h2>
+        <div style="max-width:46rem; margin:0 auto; font-size:18px">
+          <p class="center" style="margin:0 0 10px"><strong>Dress code:</strong> Indian festive or western formal <span class="muted">(Indian wear encouraged!)</span></p>
+          <p class="center muted" style="margin:0">Please check back closer to the date — we’ll share details on a few informal events during the week.</p>
+        </div>
+      </section>
+
+      <section class="section" id="rsvp" aria-label="RSVP">
+        <h2>RSVP</h2>
+        <div class="rsvp">
+          Please email us at
+          <a href="/cdn-cgi/l/email-protection#75171d00031c141b111b1c161e121001181407071c1011351218141c195b161a184a0600171f1016014827262325504745503047504d45504c41504745371d00031c5047455047435047453b1c161e53171a110c483b14181006504634504531504534340101101b111c1b1250474538101d101b111c5046345047452c10065047333b1a504531504534340101101b111c1b12504745221011111c1b125046345047452c10065047333b1a504531504534311c100114070c5047451b1a01100650463450453150453433191c121d01065047333d1a0110195047455d1c135047451e1b1a021b5c504634"><span clas
