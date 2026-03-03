@@ -227,6 +227,52 @@
       .rule span{ width: 72px; }
       .corner{ width: min(260px, 48vw); }
     }
+
+    /* ── Photo film strip ── */
+    .photostrip-outer{
+      margin: 22px calc(-1 * clamp(26px, 4.5vw, 56px)) 0;
+      border-top: 1px solid rgba(11,11,9,.13);
+      border-bottom: 1px solid rgba(11,11,9,.13);
+      background: rgba(11,11,9,.03);
+    }
+    .photostrip{
+      display: flex;
+      gap: 18px;
+      overflow-x: auto;
+      padding: 28px clamp(26px, 4.5vw, 56px);
+      cursor: grab;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      user-select: none;
+    }
+    .photostrip::-webkit-scrollbar{ display: none; }
+    .photostrip.is-dragging{ cursor: grabbing; }
+    .strip-item{
+      flex: 0 0 auto;
+      height: 210px;
+      transform: rotate(var(--r, 0deg));
+      box-shadow: 0 5px 20px rgba(0,0,0,.20);
+      transition: transform .25s ease, box-shadow .25s ease;
+      position: relative;
+      z-index: 1;
+      border-radius: 1px;
+    }
+    .strip-item:hover{
+      transform: rotate(0deg) scale(1.05);
+      box-shadow: 0 12px 34px rgba(0,0,0,.26);
+      z-index: 2;
+    }
+    .strip-item img{
+      height: 100%;
+      width: auto;
+      display: block;
+      border-radius: 1px;
+      pointer-events: none;
+    }
+    @media (max-width: 760px){
+      .strip-item{ height: 160px; }
+      .photostrip{ gap: 14px; padding: 22px clamp(26px, 4.5vw, 56px); }
+    }
   </style>
 </head>
 <body>
@@ -253,6 +299,36 @@
         <p class="subline"><span class="accent">13th &amp; 14th March</span> • New Delhi</p>
         <p class="subline muted" style="margin-top:12px">We can’t wait to celebrate with you. Details below — and please check back closer to the date for a few informal get-togethers during the week.</p>
       </section>
+
+      <!-- Photo film strip -->
+      <div class="photostrip-outer">
+        <div class="photostrip" id="photostrip">
+          <div class="strip-item" style="--r:-2deg">
+            <img src="6e88a834-aeed-4550-b358-092f30ea3ded.JPG" alt="Bhuvi and Nick on a boat at sunset" draggable="false">
+          </div>
+          <div class="strip-item" style="--r:1.5deg">
+            <img src="WhatsApp Image 2026-03-02 at 22.29.35 (1).jpeg" alt="Bhuvi and Nick in Amsterdam" draggable="false">
+          </div>
+          <div class="strip-item" style="--r:-1deg">
+            <img src="WhatsApp Image 2026-03-02 at 22.29.36.jpeg" alt="Bhuvi and Nick outdoors" draggable="false">
+          </div>
+          <div class="strip-item" style="--r:2deg">
+            <img src="IMG_7232.jpeg" alt="Bhuvi and Nick with Christmas lights" draggable="false">
+          </div>
+          <div class="strip-item" style="--r:-1.5deg">
+            <img src="c213460e-2315-4e7c-9446-43745a310fcf.JPG" alt="Bhuvi and Nick at Christmas" draggable="false">
+          </div>
+          <div class="strip-item" style="--r:1deg">
+            <img src="IMG_7594.jpeg" alt="Bhuvi and Nick winter selfie" draggable="false">
+          </div>
+          <div class="strip-item" style="--r:-2deg">
+            <img src="WhatsApp Image 2026-03-02 at 22.29.38.jpeg" alt="Thanksgiving with family" draggable="false">
+          </div>
+          <div class="strip-item" style="--r:1.5deg">
+            <img src="WhatsApp Image 2026-03-02 at 22.29.35.jpeg" alt="Family at Christmas" draggable="false">
+          </div>
+        </div>
+      </div>
 
       <section class="section" id="events" aria-label="Events">
         <h2>Events</h2>
@@ -340,5 +416,27 @@ Bhuvi ✦ Nick
 </footer>
 </div>
 </main>
+  <script>
+    (function(){
+      var strip = document.getElementById('photostrip');
+      var isDown = false, startX = 0, scrollLeft = 0;
+      strip.addEventListener('mousedown', function(e){
+        isDown = true;
+        strip.classList.add('is-dragging');
+        startX = e.pageX - strip.offsetLeft;
+        scrollLeft = strip.scrollLeft;
+      });
+      document.addEventListener('mouseup', function(){
+        isDown = false;
+        strip.classList.remove('is-dragging');
+      });
+      strip.addEventListener('mousemove', function(e){
+        if(!isDown) return;
+        e.preventDefault();
+        var x = e.pageX - strip.offsetLeft;
+        strip.scrollLeft = scrollLeft - (x - startX) * 1.3;
+      });
+    })();
+  </script>
 </body>
 </html>
